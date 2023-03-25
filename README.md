@@ -3,7 +3,7 @@
 
 A fully functional website built with Django to keep records of all posted incoming and posted outgoing offcial documents/letters for an orginazation. 
 
-As a summer inter at PCAA, I helped to automate manual diary keeping records for Mailing System in IT department by building a website with Django and Postgres DB. This website improved the productivity of IT department for entering an record and for searching a record among thousands of records from 20 to 2 per document.
+As a summer intern at PCAA, I helped to automate manual diary-keeping records for Mailing System in the IT department by building a website with Django and Postgres DB. This website improved the productivity of the IT department for entering a record and searching a record among thousands of records from 20 to 2 minutes per document.
 
 
 ## Features
