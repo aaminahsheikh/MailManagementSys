@@ -1,0 +1,70 @@
+{% extends 'mails/base.html' %}
+{% block content %}
+
+<style>
+    #add-in{
+        background-color: #0081a7;
+    }
+    #card-body{
+        background-color: #d3e3e9;
+    }
+</style>
+
+<div class="row">
+    <div class="col">
+        <div class="card card-body mt-3" id="card-body">
+            <h5>Search records by attributes: </h5>
+            <form action="" method="GET">
+                {% csrf_token %}
+                {{ myFilter.form.as_p }}
+                <input class="btn btn-primary" type="submit" value="Search">
+            </form>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md">
+        <div id="card-body" class="card card-body">
+            <a id="add-in" class="btn btn" href="{% url 'incoming_form' %}">Add new Incoming Record</a>
+
+            <table class="table table-sm table-striped table-bordered">
+                <h5>ALL INCOMING RECORDS: </h5> <hr />
+                <tr>
+                    <th>Diary #</th>
+                    <th>Reference #</th>
+                    <th>Date</th>
+                    <th>From</th>
+                    <th>To Whom Marked</th>
+                    <th>Annotation</th>
+                    <th>Annotation Date</th>
+                    <th>Sign By</th>
+                    <th>Sign Date</th>
+                    <th>Year of Transaction</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                </tr>
+
+                {% for field in all_incoming %}
+                <tr>
+                    <td>{{ field.diary_no }}</td>
+                    <td>{{ field.reference_no }}</td>
+                    <td>{{ field.date_created }}</td>
+                    <td>{{ field.from_city }}</td>
+                    <td>{{ field.to_whom_marked }}</td>
+                    <td>{{ field.annotation }}</td>
+                    <td></td>
+                    <td>{{ field.sign_by }}</td>
+                    <td>{{ field.sign_date }}</td>
+                    <td>{{ field.year_of_transcation }}</td>
+                    <td><a href="{% url 'incoming_form_update' field.id %}" class="btn btn-warning btn-sm">Update</a></td>
+                    <td><a href="{% url 'incoming_form_delete' field.id %}" class="btn btn-danger btn-sm">Delete</a></td>
+                </tr>
+                {% endfor %}
+
+            </table>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

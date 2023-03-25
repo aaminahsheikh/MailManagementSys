@@ -1,0 +1,40 @@
+{% extends 'mails/base.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+    .login-wrapper{
+        display: flex;
+        height: 80vh;
+        align-items: center;
+        justify-content: center;
+    }
+    .form{
+        width: 600px;
+    }
+
+</style>
+<div class="container">
+    <div class="login-wrapper">
+        <form class="form" action="" method="POST">
+            <h3>Login <h5><small>(Add your username and password to access your account.)</small></h5></h3>
+            <hr />
+            
+            {% csrf_token %}
+            <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Username</label>
+            <input type="text" class="form-control" name="username" placeholder="Enter username..." id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+
+            <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control" name="password" placeholder="Type password..." id="exampleInputPassword1">
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+
+    </div>
+
+</div>
+
+  {% endblock %}

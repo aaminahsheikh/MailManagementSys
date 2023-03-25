@@ -1,0 +1,23 @@
+{% extends 'mails/base.html' %}
+{% block content %}
+
+<div class="row">
+    <div class="col-md-8 mt-4">
+        <a href="{% url 'outgoing' %}" class="btn btn-secondary btn-sm mt-2">&#8592; Back </a>
+        <div class="card card-body">
+            <h5>Fill in for Outgoing Record</h5>
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+
+                <input class="btn btn-success" type="submit" value="Save">
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+{% endblock %}

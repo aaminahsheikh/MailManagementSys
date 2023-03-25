@@ -1,0 +1,66 @@
+{% extends 'mails/base.html' %}
+{% block content %}
+
+<br />
+
+{% include 'mails/status.html' %}
+<br />
+<div class="row">
+    <div class="col-md-6">
+        <h5>Recent Incoming ({{ todays_in_total }})</h5> <hr />
+        <div class="card card-body">
+            <table class="table table-sm">
+                <tr>
+                    <th>Diary #</th>
+                    <th>Reference #</th>
+                    <th>To Whom Marked</th>
+                    <th>Sign By</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                </tr>
+                {% for field in todays_in %}
+                <tr>
+                    <td>{{ field.diary_no }}</td>
+                    <td>{{ field.reference_no }}</td>
+                    <td>{{ field.to_whom_marked }}</td>
+                    <td>{{ field.sign_by }}</td>
+                    <td><a href="{% url 'incoming_form_update' field.id %}" class="btn btn-warning btn-sm">Update</a></td>
+                    <td><a href="{% url 'incoming_form_delete' field.id %}" class="btn btn-danger btn-sm">Delete</a></td>
+
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <h5>Recent Outgoing ({{ todays_out_total }})</h5> <hr />
+        <div class="card card-body">
+            <table class="table table-sm">
+                <tr>
+                    <th>Diary #</th>
+                    <th>Reference #</th>
+                    <th>From</th>
+                    <th>Disposal</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                </tr>
+
+                {% for field in todays_out %}
+                <tr>
+                    <td>{{ field.diary_no }}</td>
+                    <td>{{ field.reference_no }}</td>
+                    <td>{{ field.from_city }}</td>
+                    <td>{{ field.disposal }}</td>
+                    <td><a class="btn btn-warning btn-sm" href="{% url 'outgoing_form_update' field.id %}">Update</a></td>
+                    <td><a class="btn btn-danger btn-sm" href="{% url 'outgoing_form_delete' field.id %}">Delete</a></td>
+                </tr>
+                {% endfor %}
+
+            </table>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
